@@ -8,6 +8,7 @@ readme = "README.md"
 keywords = ["iowarrior", "iowkit"]
 categories = ["external-ffi-bindings", "hardware-support"]
 repository = "https://github.com/Tederean/iowkit-sys"
+description = "Rust bindings for the Code Mercenaries iowkit library"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
