@@ -162,11 +162,11 @@ extern crate libloading;
 #[derive(Debug)]
 pub struct Iowkit {
     __library: ::libloading::Library,
-    pub IowKitOpenDevice: Result<unsafe extern "C" fn() -> IOWKIT_HANDLE, ::libloading::Error>,
+    pub IowKitOpenDevice: Result<unsafe extern "system" fn() -> IOWKIT_HANDLE, ::libloading::Error>,
     pub IowKitCloseDevice:
-        Result<unsafe extern "C" fn(devHandle: IOWKIT_HANDLE), ::libloading::Error>,
+        Result<unsafe extern "system" fn(devHandle: IOWKIT_HANDLE), ::libloading::Error>,
     pub IowKitWrite: Result<
-        unsafe extern "C" fn(
+        unsafe extern "system" fn(
             devHandle: IOWKIT_HANDLE,
             numPipe: ULONG,
             buffer: PCHAR,
@@ -175,7 +175,7 @@ pub struct Iowkit {
         ::libloading::Error,
     >,
     pub IowKitRead: Result<
-        unsafe extern "C" fn(
+        unsafe extern "system" fn(
             devHandle: IOWKIT_HANDLE,
             numPipe: ULONG,
             buffer: PCHAR,
@@ -184,7 +184,7 @@ pub struct Iowkit {
         ::libloading::Error,
     >,
     pub IowKitReadNonBlocking: Result<
-        unsafe extern "C" fn(
+        unsafe extern "system" fn(
             devHandle: IOWKIT_HANDLE,
             numPipe: ULONG,
             buffer: PCHAR,
@@ -193,37 +193,37 @@ pub struct Iowkit {
         ::libloading::Error,
     >,
     pub IowKitReadImmediate: Result<
-        unsafe extern "C" fn(devHandle: IOWKIT_HANDLE, value: PDWORD) -> BOOL,
+        unsafe extern "system" fn(devHandle: IOWKIT_HANDLE, value: PDWORD) -> BOOL,
         ::libloading::Error,
     >,
-    pub IowKitGetNumDevs: Result<unsafe extern "C" fn() -> ULONG, ::libloading::Error>,
+    pub IowKitGetNumDevs: Result<unsafe extern "system" fn() -> ULONG, ::libloading::Error>,
     pub IowKitGetDeviceHandle:
-        Result<unsafe extern "C" fn(numDevice: ULONG) -> IOWKIT_HANDLE, ::libloading::Error>,
+        Result<unsafe extern "system" fn(numDevice: ULONG) -> IOWKIT_HANDLE, ::libloading::Error>,
     pub IowKitSetLegacyOpenMode:
-        Result<unsafe extern "C" fn(legacyOpenMode: ULONG) -> BOOL, ::libloading::Error>,
+        Result<unsafe extern "system" fn(legacyOpenMode: ULONG) -> BOOL, ::libloading::Error>,
     pub IowKitGetProductId:
-        Result<unsafe extern "C" fn(devHandle: IOWKIT_HANDLE) -> ULONG, ::libloading::Error>,
+        Result<unsafe extern "system" fn(devHandle: IOWKIT_HANDLE) -> ULONG, ::libloading::Error>,
     pub IowKitGetRevision:
-        Result<unsafe extern "C" fn(devHandle: IOWKIT_HANDLE) -> ULONG, ::libloading::Error>,
+        Result<unsafe extern "system" fn(devHandle: IOWKIT_HANDLE) -> ULONG, ::libloading::Error>,
     pub IowKitGetThreadHandle:
-        Result<unsafe extern "C" fn(devHandle: IOWKIT_HANDLE) -> HANDLE, ::libloading::Error>,
+        Result<unsafe extern "system" fn(devHandle: IOWKIT_HANDLE) -> HANDLE, ::libloading::Error>,
     pub IowKitGetSerialNumber: Result<
-        unsafe extern "C" fn(devHandle: IOWKIT_HANDLE, serialNumber: PWCHAR) -> BOOL,
+        unsafe extern "system" fn(devHandle: IOWKIT_HANDLE, serialNumber: PWCHAR) -> BOOL,
         ::libloading::Error,
     >,
     pub IowKitSetTimeout: Result<
-        unsafe extern "C" fn(devHandle: IOWKIT_HANDLE, timeout: ULONG) -> BOOL,
+        unsafe extern "system" fn(devHandle: IOWKIT_HANDLE, timeout: ULONG) -> BOOL,
         ::libloading::Error,
     >,
     pub IowKitSetWriteTimeout: Result<
-        unsafe extern "C" fn(devHandle: IOWKIT_HANDLE, timeout: ULONG) -> BOOL,
+        unsafe extern "system" fn(devHandle: IOWKIT_HANDLE, timeout: ULONG) -> BOOL,
         ::libloading::Error,
     >,
     pub IowKitCancelIo: Result<
-        unsafe extern "C" fn(devHandle: IOWKIT_HANDLE, numPipe: ULONG) -> BOOL,
+        unsafe extern "system" fn(devHandle: IOWKIT_HANDLE, numPipe: ULONG) -> BOOL,
         ::libloading::Error,
     >,
-    pub IowKitVersion: Result<unsafe extern "C" fn() -> PCSTR, ::libloading::Error>,
+    pub IowKitVersion: Result<unsafe extern "system" fn() -> PCSTR, ::libloading::Error>,
 }
 impl Iowkit {
     pub unsafe fn new<P>(path: P) -> Result<Self, ::libloading::Error>
